@@ -1,0 +1,32 @@
+
+<div class="container py-5">
+  <%= link_to "← Back to Recipes", recipes_path,
+      class: "btn btn-outline-success mb-4" %>
+
+  <h1 class="fw-bold"><%= @category.name %> Recipes</h1>
+  <p class="text-muted"><%= @category.description %></p>
+  <p><%= @recipes.total_count %> recipes found</p>
+
+  <div class="row g-4">
+    <% @recipes.each do |recipe| %>
+      <div class="col-md-4">
+        <div class="card h-100">
+          <%= image_tag recipe.image_url,
+              class: "card-img-top",
+              style: "height:220px; object-fit:cover;",
+              alt: recipe.title %>
+
+          <div class="card-body">
+            <h5><%= recipe.title %></h5>
+            <%= link_to "View Recipe", recipe_path(recipe),
+                class: "btn btn-success" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="d-flex justify-content-center mt-4">
+    <%= paginate @recipes %>
+  </div>
+</div>
