@@ -11,6 +11,9 @@
 
 /* FoodieHub Professional Pagination */
 
+
+/* FoodieHub Pagination */
+
 .pagination {
   display: flex;
   justify-content: center;
@@ -18,18 +21,15 @@
   flex-wrap: wrap;
   gap: 8px;
   margin: 35px 0;
-  padding: 0;
 }
 
 .pagination .page,
 .pagination .next,
 .pagination .prev,
 .pagination .first,
-.pagination .last,
-.pagination .gap {
+.pagination .last {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
 }
 
 .pagination a,
@@ -39,23 +39,20 @@
   justify-content: center;
   min-width: 42px;
   height: 42px;
-  padding: 0 13px;
+  padding: 0 14px;
   border: 1px solid #d7e5dc;
   border-radius: 10px;
-  background: #ffffff;
+  background: white;
   color: #17683e;
-  font-size: 15px;
   font-weight: 600;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: 0.2s ease;
 }
 
 .pagination a:hover {
   background: #e8f5ed;
   border-color: #17683e;
-  color: #125332;
   transform: translateY(-2px);
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
 }
 
 .pagination .current {
@@ -66,20 +63,6 @@
 }
 
 .pagination .gap {
-  color: #777;
   padding: 0 5px;
-}
-
-@media (max-width: 576px) {
-  .pagination {
-    gap: 5px;
-  }
-
-  .pagination a,
-  .pagination .current {
-    min-width: 36px;
-    height: 36px;
-    padding: 0 9px;
-    font-size: 13px;
-  }
+  color: #777;
 }
