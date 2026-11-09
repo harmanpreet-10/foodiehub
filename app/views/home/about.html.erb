@@ -25,12 +25,12 @@
 
   <!-- Database Statistics -->
   <section class="mb-5">
-    <h2 class="mb-4">Our Database</h2>
+    <h2>Our Database</h2>
 
-    <div class="row g-3">
+    <div class="row g-3 mt-2">
 
       <div class="col-md-3">
-        <div class="card h-100 p-3 text-center shadow-sm border-0">
+        <div class="card shadow-sm border-0 p-3 text-center h-100">
           <h3 class="text-success">
             <%= Category.count %>
           </h3>
@@ -39,7 +39,7 @@
       </div>
 
       <div class="col-md-3">
-        <div class="card h-100 p-3 text-center shadow-sm border-0">
+        <div class="card shadow-sm border-0 p-3 text-center h-100">
           <h3 class="text-success">
             <%= Recipe.count %>
           </h3>
@@ -48,7 +48,7 @@
       </div>
 
       <div class="col-md-3">
-        <div class="card h-100 p-3 text-center shadow-sm border-0">
+        <div class="card shadow-sm border-0 p-3 text-center h-100">
           <h3 class="text-success">
             <%= Ingredient.count %>
           </h3>
@@ -57,7 +57,7 @@
       </div>
 
       <div class="col-md-3">
-        <div class="card h-100 p-3 text-center shadow-sm border-0">
+        <div class="card shadow-sm border-0 p-3 text-center h-100">
           <h3 class="text-success">
             <%= RecipeIngredient.count %>
           </h3>
@@ -73,9 +73,7 @@
     <h2>Data Sources</h2>
 
     <p>
-      FoodieHub imports recipe information from two public APIs.
-      The imported data is stored in a local SQLite database
-      using Ruby on Rails ActiveRecord models.
+      FoodieHub imports recipe information from two public APIs:
     </p>
 
     <div class="card shadow-sm border-0 p-4">
@@ -88,7 +86,7 @@
             TheMealDB
           </a>
           — Provides food recipes, images, ingredients,
-          and preparation instructions.
+          and cooking instructions.
         </li>
 
         <li>
@@ -120,44 +118,44 @@
       <li>One Recipe has many RecipeIngredients.</li>
       <li>One Ingredient has many RecipeIngredients.</li>
       <li>
-        Recipes and Ingredients have a many-to-many
-        relationship through RecipeIngredients.
+        Recipes and Ingredients have a many-to-many relationship
+        through RecipeIngredients.
       </li>
       <li>
-        RecipeIngredient stores the quantity of each
-        ingredient used in a recipe.
+        RecipeIngredient stores the quantity of each ingredient
+        used in a recipe.
       </li>
     </ul>
   </section>
 
-  <!-- Database ERD -->
+  <!-- Database ERD Diagram -->
   <section class="mb-5">
     <h2 class="fw-bold">Database ERD Diagram</h2>
 
     <p>
       The Entity Relationship Diagram (ERD) illustrates
-      FoodieHub's database structure, including the four
-      tables, primary keys, foreign keys, and relationships.
+      FoodieHub's database structure, including four tables,
+      primary keys, foreign keys, and relationships.
     </p>
 
-    <div class="card shadow-sm border-0 p-4">
-      <h4 class="text-success">
-        Explore Our Database Structure
-      </h4>
+    <div class="card shadow-sm border-0 p-4 mt-3">
 
-      <p>
-        View the ERD documentation to understand how
-        categories, recipes, ingredients, and recipe
-        ingredients are connected.
+      <h3 class="text-success text-center mb-3">
+        FoodieHub Database ERD
+      </h3>
+
+      <div class="text-center">
+        <%= image_tag "database_erd.png",
+            alt: "FoodieHub Database Entity Relationship Diagram",
+            class: "img-fluid rounded",
+            style: "max-height: 750px; width: auto;" %>
+      </div>
+
+      <p class="text-muted text-center mt-3 mb-0">
+        Database structure showing Categories, Recipes,
+        Ingredients, and RecipeIngredients.
       </p>
 
-      <div>
-        <%= link_to "View Database ERD",
-            "/database_erd.md",
-            class: "btn btn-success",
-            target: "_blank",
-            rel: "noopener noreferrer" %>
-      </div>
     </div>
   </section>
 
@@ -165,31 +163,38 @@
   <section class="mb-5">
     <h2>Technologies Used</h2>
 
-    <div class="row g-3">
-      <% [
-        "Ruby on Rails",
-        "SQLite",
-        "ActiveRecord",
-        "Bootstrap",
-        "ERB",
-        "Kaminari",
-        "Git",
-        "GitHub"
-      ].each do |technology| %>
+    <div class="card shadow-sm border-0 p-4">
+      <div class="row g-3">
 
-        <div class="col-6 col-md-3">
-          <div class="card text-center p-3 h-100 shadow-sm border-0">
-            <strong><%= technology %></strong>
-          </div>
+        <div class="col-md-6">
+          <h5 class="text-success">Backend</h5>
+          <p>Ruby on Rails, ActiveRecord, SQLite</p>
         </div>
 
-      <% end %>
+        <div class="col-md-6">
+          <h5 class="text-success">Frontend</h5>
+          <p>HTML5, CSS3, Bootstrap, ERB</p>
+        </div>
+
+        <div class="col-md-6">
+          <h5 class="text-success">Additional Tools</h5>
+          <p>Kaminari, Git, GitHub</p>
+        </div>
+
+        <div class="col-md-6">
+          <h5 class="text-success">External APIs</h5>
+          <p>TheMealDB and TheCocktailDB</p>
+        </div>
+
+      </div>
     </div>
   </section>
 
-</div>
-<div class="text-center mb-4">
-  <%= image_tag "/database_erd.png",
-      class: "img-fluid rounded shadow-sm",
-      alt: "FoodieHub Entity Relationship Diagram" %>
+  <!-- Navigation -->
+  <div class="text-center mt-5">
+    <%= link_to "Explore Recipes",
+        recipes_path,
+        class: "btn btn-success btn-lg px-5" %>
+  </div>
+
 </div>
