@@ -1,90 +1,195 @@
 
 <div class="container py-5">
+
+  <!-- Page Header -->
   <div class="text-center mb-5">
-    <h1 class="display-5 fw-bold text-success">About FoodieHub</h1>
+    <h1 class="display-5 fw-bold text-success">
+      About FoodieHub
+    </h1>
+
     <p class="lead">
       A Ruby on Rails application for exploring food and drink recipes.
     </p>
   </div>
 
-  <h2>Project Overview</h2>
-  <p>
-    FoodieHub allows visitors to explore vegetarian and
-    non-vegetarian meals, discover drinks, search recipes,
-    browse categories, and view ingredients and instructions.
-  </p>
+  <!-- Project Overview -->
+  <section class="mb-5">
+    <h2>Project Overview</h2>
 
-  <h2 class="mt-5">Our Database</h2>
-  <div class="row g-3 mb-4">
-    <div class="col-md-3">
-      <div class="card p-3 text-center">
-        <h3><%= Category.count %></h3>
-        <p>Categories</p>
+    <p>
+      FoodieHub allows visitors to explore vegetarian and
+      non-vegetarian meals, discover drinks, search recipes,
+      browse categories, and view ingredients and instructions.
+    </p>
+  </section>
+
+  <!-- Database Statistics -->
+  <section class="mb-5">
+    <h2 class="mb-4">Our Database</h2>
+
+    <div class="row g-3">
+
+      <div class="col-md-3">
+        <div class="card h-100 p-3 text-center shadow-sm border-0">
+          <h3 class="text-success">
+            <%= Category.count %>
+          </h3>
+          <p class="mb-0">Categories</p>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card h-100 p-3 text-center shadow-sm border-0">
+          <h3 class="text-success">
+            <%= Recipe.count %>
+          </h3>
+          <p class="mb-0">Recipes</p>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card h-100 p-3 text-center shadow-sm border-0">
+          <h3 class="text-success">
+            <%= Ingredient.count %>
+          </h3>
+          <p class="mb-0">Ingredients</p>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card h-100 p-3 text-center shadow-sm border-0">
+          <h3 class="text-success">
+            <%= RecipeIngredient.count %>
+          </h3>
+          <p class="mb-0">Recipe Ingredients</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Data Sources -->
+  <section class="mb-5">
+    <h2>Data Sources</h2>
+
+    <p>
+      FoodieHub imports recipe information from two public APIs.
+      The imported data is stored in a local SQLite database
+      using Ruby on Rails ActiveRecord models.
+    </p>
+
+    <div class="card shadow-sm border-0 p-4">
+      <ul class="mb-0">
+
+        <li class="mb-3">
+          <a href="https://www.themealdb.com/api.php"
+             target="_blank"
+             rel="noopener noreferrer">
+            TheMealDB
+          </a>
+          — Provides food recipes, images, ingredients,
+          and preparation instructions.
+        </li>
+
+        <li>
+          <a href="https://www.thecocktaildb.com/api.php"
+             target="_blank"
+             rel="noopener noreferrer">
+            TheCocktailDB
+          </a>
+          — Provides drink recipes, images, ingredients,
+          and preparation instructions.
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- Database Relationships -->
+  <section class="mb-5">
+    <h2>Database Relationships</h2>
+
+    <p>
+      FoodieHub uses four ActiveRecord models:
+      Category, Recipe, Ingredient, and RecipeIngredient.
+    </p>
+
+    <ul>
+      <li>One Category has many Recipes.</li>
+      <li>Each Recipe belongs to one Category.</li>
+      <li>One Recipe has many RecipeIngredients.</li>
+      <li>One Ingredient has many RecipeIngredients.</li>
+      <li>
+        Recipes and Ingredients have a many-to-many
+        relationship through RecipeIngredients.
+      </li>
+      <li>
+        RecipeIngredient stores the quantity of each
+        ingredient used in a recipe.
+      </li>
+    </ul>
+  </section>
+
+  <!-- Database ERD -->
+  <section class="mb-5">
+    <h2 class="fw-bold">Database ERD Diagram</h2>
+
+    <p>
+      The Entity Relationship Diagram (ERD) illustrates
+      FoodieHub's database structure, including the four
+      tables, primary keys, foreign keys, and relationships.
+    </p>
+
+    <div class="card shadow-sm border-0 p-4">
+      <h4 class="text-success">
+        Explore Our Database Structure
+      </h4>
+
+      <p>
+        View the ERD documentation to understand how
+        categories, recipes, ingredients, and recipe
+        ingredients are connected.
+      </p>
+
+      <div>
+        <%= link_to "View Database ERD",
+            "/database_erd.md",
+            class: "btn btn-success",
+            target: "_blank",
+            rel: "noopener noreferrer" %>
       </div>
     </div>
+  </section>
 
-    <div class="col-md-3">
-      <div class="card p-3 text-center">
-        <h3><%= Recipe.count %></h3>
-        <p>Recipes</p>
-      </div>
+  <!-- Technologies -->
+  <section class="mb-5">
+    <h2>Technologies Used</h2>
+
+    <div class="row g-3">
+      <% [
+        "Ruby on Rails",
+        "SQLite",
+        "ActiveRecord",
+        "Bootstrap",
+        "ERB",
+        "Kaminari",
+        "Git",
+        "GitHub"
+      ].each do |technology| %>
+
+        <div class="col-6 col-md-3">
+          <div class="card text-center p-3 h-100 shadow-sm border-0">
+            <strong><%= technology %></strong>
+          </div>
+        </div>
+
+      <% end %>
     </div>
+  </section>
 
-    <div class="col-md-3">
-      <div class="card p-3 text-center">
-        <h3><%= Ingredient.count %></h3>
-        <p>Ingredients</p>
-      </div>
-    </div>
-
-    <div class="col-md-3">
-      <div class="card p-3 text-center">
-        <h3><%= RecipeIngredient.count %></h3>
-        <p>Recipe Ingredients</p>
-      </div>
-    </div>
-  </div>
-
-  <h2>Data Sources</h2>
-  <p>
-    FoodieHub imports recipe information from two public APIs:
-  </p>
-
-  <ul>
-    <li>
-      <a href="https://www.themealdb.com/api.php"
-         target="_blank" rel="noopener noreferrer">
-        TheMealDB
-      </a>
-      — Food recipes, images, ingredients and instructions.
-    </li>
-
-    <li>
-      <a href="https://www.thecocktaildb.com/api.php"
-         target="_blank" rel="noopener noreferrer">
-        TheCocktailDB
-      </a>
-      — Drink recipes, images, ingredients and instructions.
-    </li>
-  </ul>
-
-  <h2 class="mt-5">Database Relationships</h2>
-  <p>
-    FoodieHub uses four ActiveRecord models:
-    Category, Recipe, Ingredient and RecipeIngredient.
-  </p>
-
-  <ul>
-    <li>One Category has many Recipes.</li>
-    <li>Each Recipe belongs to one Category.</li>
-    <li>Recipes have many Ingredients through RecipeIngredients.</li>
-    <li>Ingredients can belong to many Recipes.</li>
-    <li>RecipeIngredient stores the quantity of each ingredient.</li>
-  </ul>
-
-  <h2 class="mt-5">Technologies</h2>
-  <p>
-    Ruby on Rails, SQLite, ActiveRecord, Bootstrap,
-    ERB, Kaminari, Git and GitHub.
-  </p>
+</div>
+<div class="text-center mb-4">
+  <%= image_tag "/database_erd.png",
+      class: "img-fluid rounded shadow-sm",
+      alt: "FoodieHub Entity Relationship Diagram" %>
 </div>
