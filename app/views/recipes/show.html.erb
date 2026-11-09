@@ -1,43 +1,127 @@
 
 <div class="container py-5">
-  <%= link_to "← Back to Recipes", recipes_path,
+
+  <!-- Back Button -->
+  <%= link_to "← Back to All Recipes",
+      recipes_path,
       class: "btn btn-outline-success mb-4" %>
 
   <div class="row g-4">
-    <div class="col-md-5">
-      <%= image_tag @recipe.image_url,
-          class: "img-fluid rounded shadow",
-          alt: @recipe.title %>
+
+    <!-- Recipe Image -->
+    <div class="col-lg-5">
+      <div class="card border-0 shadow-sm overflow-hidden">
+
+        <%= image_tag @recipe.image_url,
+            class: "img-fluid w-100",
+            style: "max-height: 450px; object-fit: cover;",
+            alt: @recipe.title %>
+
+      </div>
     </div>
 
-    <div class="col-md-7">
-      <h1 class="fw-bold"><%= @recipe.title %></h1>
+    <!-- Recipe Information -->
+    <div class="col-lg-7">
 
-      <p class="text-muted">
-        Category:
+      <h1 class="fw-bold mb-3">
+        <%= @recipe.title %>
+      </h1>
+
+      <p class="mb-4">
+        <span class="text-muted">Category:</span>
+
         <%= link_to @recipe.category.name,
-    category_path(@recipe.category),
-    class: "text-success fw-bold" %>
+            category_path(@recipe.category),
+            class: "badge bg-success text-decoration-none fs-6" %>
       </p>
 
-      <h3 class="mt-4">Ingredients</h3>
+      <!-- Ingredients Section -->
+      <div class="card border-0 shadow-sm">
 
-      <ul class="list-group mb-4">
-        <% @recipe.recipe_ingredients.each do |item| %>
-          <li class="list-group-item">
-            <strong><%= item.ingredient.name %></strong>
-            — <%= item.quantity %>
-          </li>
-        <% end %>
-      </ul>
+        <div class="card-header bg-success text-white">
+          <h3 class="h5 mb-0">
+            Ingredients
+            (<%= @recipe.recipe_ingredients.size %>)
+          </h3>
+        </div>
+
+        <div class="card-body p-0">
+
+          <% if @recipe.recipe_ingredients.any? %>
+
+            <ul class="list-group list-group-flush">
+
+              <% @recipe.recipe_ingredients.each do |item| %>
+
+                <li class="list-group-item d-flex justify-content-between align-items-center gap-3">
+
+                  <span class="fw-semibold">
+                    <%= item.ingredient.name %>
+                  </span>
+
+                  <span class="text-muted text-end">
+                    <%= item.quantity.presence || "As needed" %>
+                  </span>
+
+                </li>
+
+              <% end %>
+
+            </ul>
+
+          <% else %>
+
+            <p class="text-muted p-3 mb-0">
+              No ingredients are available for this recipe.
+            </p>
+
+          <% end %>
+
+        </div>
+      </div>
+
     </div>
   </div>
 
-  <div class="card mt-5 p-4">
-    <h2>Preparation Instructions</h2>
+  <!-- Preparation Instructions -->
+  <div class="card border-0 shadow-sm mt-5">
 
-    <p class="lh-lg">
-      <%= simple_format(@recipe.instructions) %>
-    </p>
+    <div class="card-header bg-success text-white">
+      <h2 class="h5 mb-0">
+        Preparation Instructions
+      </h2>
+    </div>
+
+    <div class="card-body p-4">
+
+      <% if @recipe.instructions.present? %>
+
+        <div class="lh-lg">
+          <%= simple_format(@recipe.instructions) %>
+        </div>
+
+      <% else %>
+
+        <p class="text-muted mb-0">
+          Preparation instructions are not available for this recipe.
+        </p>
+
+      <% end %>
+
+    </div>
   </div>
+
+  <!-- Bottom Navigation -->
+  <div class="d-flex flex-wrap gap-2 mt-4">
+
+    <%= link_to "Browse More Recipes",
+        recipes_path,
+        class: "btn btn-success" %>
+
+    <%= link_to "Explore #{@recipe.category.name}",
+        category_path(@recipe.category),
+        class: "btn btn-outline-success" %>
+
+  </div>
+
 </div>
