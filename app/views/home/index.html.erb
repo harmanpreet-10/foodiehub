@@ -1,0 +1,97 @@
+
+<!-- FoodieHub Homepage -->
+
+<section class="py-5 text-white text-center"
+         style="background: linear-gradient(135deg, #176b42, #39a56b);">
+  <div class="container py-5">
+    <h1 class="display-3 fw-bold">Welcome to FoodieHub</h1>
+
+    <p class="lead mt-3">
+      Discover delicious food and drink recipes from around the world.
+    </p>
+
+    <p>
+      Explore vegetarian dishes, non-vegetarian meals,
+      and refreshing drinks.
+    </p>
+
+    <%= link_to "Explore Recipes", recipes_path,
+        class: "btn btn-light btn-lg mt-3 px-4" %>
+  </div>
+</section>
+
+<section class="container py-5">
+  <h2 class="text-center fw-bold mb-4">What Can You Explore?</h2>
+
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card h-100">
+        <img
+          src="https://www.themealdb.com/images/media/meals/llcbn01574260722.jpg"
+          class="card-img-top"
+          alt="Vegetarian meal"
+          style="height: 230px; object-fit: cover;"
+        >
+
+        <div class="card-body text-center">
+          <h4>Vegetarian Recipes</h4>
+          <p>Discover delicious plant-based dishes.</p>
+
+          <%= link_to "Browse Recipes", recipes_path,
+              class: "btn btn-success" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card h-100">
+        <img
+          src="https://www.themealdb.com/images/media/meals/1529446352.jpg"
+          class="card-img-top"
+          alt="Non-vegetarian meal"
+          style="height: 230px; object-fit: cover;"
+        >
+
+        <div class="card-body text-center">
+          <h4>Non-Vegetarian Recipes</h4>
+          <p>Explore delicious chicken, meat and seafood dishes.</p>
+
+          <%= link_to "Browse Recipes", recipes_path,
+              class: "btn btn-success" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card h-100">
+        <img
+          src="https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg"
+          class="card-img-top"
+          alt="Refreshing drink"
+          style="height: 230px; object-fit: cover;"
+        >
+
+        <div class="card-body text-center">
+          <h4>Drinks</h4>
+          <p>Find refreshing beverages and drink recipes.</p>
+
+          <%= link_to "Browse Drinks",
+              recipes_path(category_id: Category.find_by(name: "Drinks")&.id),
+              class: "btn btn-success" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container text-center py-5">
+  <h2 class="fw-bold">Explore Our Recipe Collection</h2>
+
+  <p class="lead">
+    Browse our collection of recipes, search by name,
+    and explore different categories.
+  </p>
+
+  <%= link_to "View All Recipes", recipes_path,
+      class: "btn btn-success btn-lg" %>
+</section>
