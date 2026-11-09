@@ -20,5 +20,6 @@ class HomeController < ApplicationController
   end
 
   def about
+    # Displays the About FoodieHub page
   end
 end
