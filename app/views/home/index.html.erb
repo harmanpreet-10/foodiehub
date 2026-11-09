@@ -35,7 +35,7 @@
     <div class="col-md-4">
       <div class="card border-0 shadow-sm h-100 p-4">
         <h2 class="fw-bold text-success">
-          <%= Recipe.count %>
+          <%= @recipe_count %>
         </h2>
         <p class="mb-0">Recipes Available</p>
       </div>
@@ -44,7 +44,7 @@
     <div class="col-md-4">
       <div class="card border-0 shadow-sm h-100 p-4">
         <h2 class="fw-bold text-success">
-          <%= Category.count %>
+          <%= @category_count %>
         </h2>
         <p class="mb-0">Recipe Categories</p>
       </div>
@@ -53,7 +53,7 @@
     <div class="col-md-4">
       <div class="card border-0 shadow-sm h-100 p-4">
         <h2 class="fw-bold text-success">
-          <%= Ingredient.count %>
+          <%= @ingredient_count %>
         </h2>
         <p class="mb-0">Ingredients</p>
       </div>
@@ -71,6 +71,7 @@
 
   <div class="row g-4">
 
+    <!-- Vegetarian -->
     <div class="col-md-4">
       <div class="card h-100 shadow-sm border-0">
 
@@ -88,13 +89,14 @@
           </p>
 
           <%= link_to "Browse Vegetarian",
-              recipes_path(category_id: Category.find_by(name: "Vegetarian")&.id),
+              recipes_path(category_id: @vegetarian_category&.id),
               class: "btn btn-success mt-auto" %>
         </div>
 
       </div>
     </div>
 
+    <!-- Non-Vegetarian -->
     <div class="col-md-4">
       <div class="card h-100 shadow-sm border-0">
 
@@ -119,6 +121,7 @@
       </div>
     </div>
 
+    <!-- Drinks -->
     <div class="col-md-4">
       <div class="card h-100 shadow-sm border-0">
 
@@ -136,7 +139,7 @@
           </p>
 
           <%= link_to "Browse Drinks",
-              recipes_path(category_id: Category.find_by(name: "Drinks")&.id),
+              recipes_path(category_id: @drinks_category&.id),
               class: "btn btn-success mt-auto" %>
         </div>
 
@@ -157,11 +160,9 @@
     Discover recipes from our collection.
   </p>
 
-  <% featured_recipes = Recipe.order(:id).limit(3) %>
-
   <div class="row g-4">
 
-    <% featured_recipes.each do |recipe| %>
+    <% @featured_recipes.each do |recipe| %>
 
       <div class="col-md-4">
 
@@ -206,7 +207,7 @@
 
   <div class="d-flex flex-wrap justify-content-center gap-3">
 
-    <% Category.order(:name).each do |category| %>
+    <% @categories.each do |category| %>
 
       <%= link_to category.name,
           category_path(category),
