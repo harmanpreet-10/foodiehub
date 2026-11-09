@@ -1,29 +1,110 @@
 
 <div class="container py-5">
-  <h1 class="fw-bold mb-4">About FoodieHub</h1>
 
-  <p class="lead">
-    FoodieHub is a Ruby on Rails application that helps
-    users discover recipes, explore food categories,
-    and search recipes by ingredients.
-  </p>
+  <!-- About FoodieHub -->
+  <div class="mb-5">
+    <span class="badge bg-success mb-3 px-3 py-2">
+      Ruby on Rails Project
+    </span>
 
-  <h2 class="mt-4">Project Features</h2>
+    <h1 class="fw-bold mb-4">About FoodieHub</h1>
 
-  <ul>
-    <li>Browse recipes from multiple APIs</li>
-    <li>Search recipes by title or ingredient</li>
-    <li>Filter recipes by category</li>
-    <li>View recipe ingredients and instructions</li>
-    <li>Navigate through paginated recipe listings</li>
-  </ul>
+    <p class="lead text-muted">
+      FoodieHub is a Ruby on Rails application that helps
+      users discover delicious recipes, explore food and
+      drink categories, and search recipes by ingredients.
+    </p>
+  </div>
 
-  <h2 class="mt-4">Data Sources</h2>
+  <!-- Project Features -->
+  <section class="mb-5">
+    <h2 class="fw-bold mb-4">Project Features</h2>
 
-  <p>
-    FoodieHub uses TheMealDB and TheCocktailDB
-    to provide recipe information.
-  </p>
+    <div class="row g-3">
+      <% [
+        "Browse recipes from multiple APIs",
+        "Search recipes by title or ingredient",
+        "Filter recipes by category",
+        "View recipe ingredients and instructions",
+        "Navigate through paginated recipe listings"
+      ].each do |feature| %>
 
-  <%= link_to "Browse Recipes", recipes_path, class: "btn btn-success mt-3" %>
+        <div class="col-md-6">
+          <div class="bg-white border rounded-3 p-3 h-100 shadow-sm">
+            <span class="text-success fw-bold me-2">✓</span>
+            <%= feature %>
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+  </section>
+
+  <!-- Data Sources -->
+  <section class="mb-5">
+    <h2 class="fw-bold mb-3">Data Sources</h2>
+
+    <p class="text-muted">
+      FoodieHub uses TheMealDB and TheCocktailDB APIs
+      to provide food and drink recipe information,
+      including ingredients, images, and instructions.
+    </p>
+
+    <div class="d-flex gap-3 flex-wrap">
+      <a href="https://www.themealdb.com/"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="btn btn-outline-success">
+        TheMealDB
+      </a>
+
+      <a href="https://www.thecocktaildb.com/"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="btn btn-outline-success">
+        TheCocktailDB
+      </a>
+    </div>
+  </section>
+
+  <!-- Database ERD -->
+  <section class="mb-5">
+    <h2 class="fw-bold mb-3">
+      Database Entity Relationship Diagram
+    </h2>
+
+    <p class="text-muted">
+      The FoodieHub database consists of four main models:
+      Category, Recipe, Ingredient, and RecipeIngredient.
+      The diagram below illustrates the relationships
+      between these models.
+    </p>
+
+    <div class="card border-0 shadow-sm rounded-4">
+      <div class="card-body p-4 text-center">
+
+        <%= image_tag "foodiehub_erd.png",
+              alt: "FoodieHub Database Entity Relationship Diagram",
+              class: "img-fluid rounded-3" %>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Explore Recipes -->
+  <section class="bg-light rounded-4 p-4 p-md-5 text-center border">
+    <h2 class="fw-bold mb-3">
+      Start Exploring Recipes
+    </h2>
+
+    <p class="text-muted mb-4">
+      Discover food and drink recipes, explore categories,
+      and find your next favourite recipe.
+    </p>
+
+    <%= link_to "Browse Recipes",
+          recipes_path,
+          class: "btn btn-success btn-lg px-4" %>
+  </section>
+
 </div>
