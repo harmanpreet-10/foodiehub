@@ -8,3 +8,78 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+/* FoodieHub Professional Pagination */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 35px 0;
+  padding: 0;
+}
+
+.pagination .page,
+.pagination .next,
+.pagination .prev,
+.pagination .first,
+.pagination .last,
+.pagination .gap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination a,
+.pagination .current {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  height: 42px;
+  padding: 0 13px;
+  border: 1px solid #d7e5dc;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #17683e;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.pagination a:hover {
+  background: #e8f5ed;
+  border-color: #17683e;
+  color: #125332;
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.pagination .current {
+  background: #17683e;
+  color: white;
+  border-color: #17683e;
+  box-shadow: 0 3px 8px rgba(23, 104, 62, 0.2);
+}
+
+.pagination .gap {
+  color: #777;
+  padding: 0 5px;
+}
+
+@media (max-width: 576px) {
+  .pagination {
+    gap: 5px;
+  }
+
+  .pagination a,
+  .pagination .current {
+    min-width: 36px;
+    height: 36px;
+    padding: 0 9px;
+    font-size: 13px;
+  }
+}
