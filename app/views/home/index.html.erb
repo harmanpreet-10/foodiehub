@@ -4,9 +4,7 @@
 <!-- Welcome Section -->
 <section class="py-5 text-white text-center"
          style="background: linear-gradient(135deg, #176b42, #39a56b);">
-
   <div class="container py-5">
-
     <h1 class="display-3 fw-bold">
       Welcome to FoodieHub
     </h1>
@@ -23,13 +21,11 @@
     <%= link_to "Explore Recipes",
         recipes_path,
         class: "btn btn-light btn-lg mt-3 px-4 fw-semibold" %>
-
   </div>
 </section>
 
-<!-- Recipe Collection Statistics -->
+<!-- Recipe Statistics -->
 <section class="container py-5">
-
   <div class="row g-4 text-center">
 
     <div class="col-md-4">
@@ -64,7 +60,6 @@
 
 <!-- Recipe Types -->
 <section class="container py-5">
-
   <h2 class="text-center fw-bold mb-4">
     What Can You Explore?
   </h2>
@@ -74,7 +69,6 @@
     <!-- Vegetarian -->
     <div class="col-md-4">
       <div class="card h-100 shadow-sm border-0">
-
         <img
           src="https://www.themealdb.com/images/media/meals/llcbn01574260722.jpg"
           class="card-img-top"
@@ -82,24 +76,20 @@
           style="height: 230px; object-fit: cover;">
 
         <div class="card-body text-center d-flex flex-column">
-          <h4>Vegetarian Recipes</h4>
+          <h3 class="fs-4">Vegetarian Recipes</h3>
 
-          <p>
-            Discover delicious plant-based dishes.
-          </p>
+          <p>Discover delicious plant-based dishes.</p>
 
           <%= link_to "Browse Vegetarian",
               recipes_path(category_id: @vegetarian_category&.id),
               class: "btn btn-success mt-auto" %>
         </div>
-
       </div>
     </div>
 
     <!-- Non-Vegetarian -->
     <div class="col-md-4">
       <div class="card h-100 shadow-sm border-0">
-
         <img
           src="https://www.themealdb.com/images/media/meals/1529446352.jpg"
           class="card-img-top"
@@ -107,24 +97,20 @@
           style="height: 230px; object-fit: cover;">
 
         <div class="card-body text-center d-flex flex-column">
-          <h4>Non-Vegetarian Recipes</h4>
+          <h3 class="fs-4">Non-Vegetarian Recipes</h3>
 
-          <p>
-            Explore chicken, meat and seafood dishes.
-          </p>
+          <p>Explore chicken, meat and seafood dishes.</p>
 
           <%= link_to "Browse Recipes",
               recipes_path,
               class: "btn btn-success mt-auto" %>
         </div>
-
       </div>
     </div>
 
     <!-- Drinks -->
     <div class="col-md-4">
       <div class="card h-100 shadow-sm border-0">
-
         <img
           src="https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg"
           class="card-img-top"
@@ -132,17 +118,14 @@
           style="height: 230px; object-fit: cover;">
 
         <div class="card-body text-center d-flex flex-column">
-          <h4>Drinks</h4>
+          <h3 class="fs-4">Drinks</h3>
 
-          <p>
-            Find refreshing beverages and drink recipes.
-          </p>
+          <p>Find refreshing beverages and drink recipes.</p>
 
           <%= link_to "Browse Drinks",
               recipes_path(category_id: @drinks_category&.id),
               class: "btn btn-success mt-auto" %>
         </div>
-
       </div>
     </div>
 
@@ -151,7 +134,6 @@
 
 <!-- Featured Recipes -->
 <section class="container py-5">
-
   <h2 class="text-center fw-bold mb-3">
     Featured Recipes
   </h2>
@@ -163,9 +145,7 @@
   <div class="row g-4">
 
     <% @featured_recipes.each do |recipe| %>
-
       <div class="col-md-4">
-
         <div class="card h-100 shadow-sm border-0">
 
           <%= image_tag recipe.image_url,
@@ -175,9 +155,9 @@
 
           <div class="card-body d-flex flex-column">
 
-            <h5 class="card-title">
+            <h3 class="fs-5 card-title">
               <%= recipe.title %>
-            </h5>
+            </h3>
 
             <p class="text-muted">
               <%= recipe.category.name %>
@@ -188,11 +168,8 @@
                 class: "btn btn-success mt-auto" %>
 
           </div>
-
         </div>
-
       </div>
-
     <% end %>
 
   </div>
@@ -200,7 +177,6 @@
 
 <!-- Browse Categories -->
 <section class="container py-5">
-
   <h2 class="text-center fw-bold mb-4">
     Browse by Category
   </h2>
@@ -208,20 +184,16 @@
   <div class="d-flex flex-wrap justify-content-center gap-3">
 
     <% @categories.each do |category| %>
-
       <%= link_to category.name,
           category_path(category),
           class: "btn btn-outline-success" %>
-
     <% end %>
 
   </div>
-
 </section>
 
 <!-- Final Call to Action -->
 <section class="container text-center py-5">
-
   <h2 class="fw-bold">
     Explore Our Recipe Collection
   </h2>
@@ -234,5 +206,4 @@
   <%= link_to "View All Recipes",
       recipes_path,
       class: "btn btn-success btn-lg" %>
-
 </section>
